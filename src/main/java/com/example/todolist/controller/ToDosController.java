@@ -19,4 +19,10 @@ public class ToDosController {
     public List<Todo> getAllToDos(){
         return toDoService.getAllToDos();
     }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Todo addNewToDo(@RequestBody Todo todo){
+        return toDoService.addNewTodo(todo);
+    }
 }
