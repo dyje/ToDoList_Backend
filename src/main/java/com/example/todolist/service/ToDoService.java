@@ -24,4 +24,15 @@ public class ToDoService {
         return toDoRepository.save(todo);
     }
 
+    public Todo getItemById(Integer itemId){
+        return toDoRepository.findById(itemId).orElse(null);
+    }
+
+    public Todo removeToDo(Integer itemId){
+        Todo itemToBeRemoved = getItemById(itemId);
+        if (itemToBeRemoved != null)
+            toDoRepository.delete(itemToBeRemoved);
+        return itemToBeRemoved;
+    }
+
 }

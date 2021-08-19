@@ -25,4 +25,9 @@ public class ToDosController {
     public Todo addNewToDo(@RequestBody Todo todo){
         return toDoService.addNewTodo(todo);
     }
+
+    @DeleteMapping(path = "/{itemId}")
+    public Todo removeToDo(@PathVariable Integer itemId){
+        return toDoService.removeToDo(itemId);
+    }
 }
