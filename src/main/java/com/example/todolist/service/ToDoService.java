@@ -38,17 +38,19 @@ public class ToDoService {
     public Todo updateToDo(Integer itemId, Todo toDoUpdate){
         Todo itemToBeUpdated = toDoRepository.findById(itemId)
                 .map(todo -> updateToDoInfo(todo, toDoUpdate))
-                //.map(todo -> new Todo(todo.getId(), todo.getText(), toDoUpdate.isDone()))
                 .get();
         return toDoRepository.save(itemToBeUpdated);
     }
 
     public Todo updateToDoInfo (Todo todo , Todo updatedToDo){
-        if (todo.isDone() != updatedToDo.isDone())
-            todo.setDone(todo.isDone());
-        if (todo.getText() != updatedToDo.getText())
+        if(todo.isDone() != updatedToDo.isDone()){
+            todo.setDone(updatedToDo.isDone());
+        }
+        if (updatedToDo.getText() != null){
             todo.setText(updatedToDo.getText());
+        }
         return todo;
+
     }
 
 }
