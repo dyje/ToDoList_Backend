@@ -30,4 +30,9 @@ public class ToDosController {
     public Todo removeToDo(@PathVariable Integer itemId){
         return toDoService.removeToDo(itemId);
     }
+
+    @PutMapping(path = "/{itemId}")
+    public Todo updateToDo(@PathVariable Integer itemId, @RequestBody  Todo todo){
+        return toDoService.updateToDo(itemId, todo);
+    }
 }

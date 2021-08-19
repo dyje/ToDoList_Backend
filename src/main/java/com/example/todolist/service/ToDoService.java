@@ -35,4 +35,17 @@ public class ToDoService {
         return itemToBeRemoved;
     }
 
+    public Todo updateToDo(Integer itemId, Todo toDoUpdate){
+        Todo itemToBeUpdated = toDoRepository.findById(itemId)
+                .map(todo -> new Todo(todo.getId(), todo.getText(), toDoUpdate.isDone()))
+                .get();
+        return toDoRepository.save(itemToBeUpdated);
+    }
+
+    public Todo updateToDoInfo (Todo todo , Todo updatedToDo){
+        Todo updatedTodoStatus = new Todo(todo.getId(), todo.getText(), todo.isDone());
+        updatedTodoStatus.setDone(updatedToDo.isDone());
+        return updatedTodoStatus;
+    }
+
 }
