@@ -33,6 +33,9 @@ public class Todo {
     public boolean isDone() {
         return done;
     }
+    public void setText(String text) {
+        this.text = text;
+    }
 
     public void setDone(boolean done) {
         this.done = done;
